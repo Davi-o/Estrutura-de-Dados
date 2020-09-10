@@ -26,7 +26,7 @@ void exibirDadosAluno(struct Aluno aluno){
     printf("\nNotas: N1 = %d, N2 = %d, N3 = %d ", aluno.notas[0],aluno.notas[1], aluno.notas[2]);
     printf("\nMedia: %f ", aluno.media);
     printf("\nConceito: %c ", aluno.conceito);
-};
+}
 
 void calcularMedia(struct Aluno *aluno){
     double total = 0;
@@ -38,7 +38,7 @@ void calcularMedia(struct Aluno *aluno){
     }
 
     aluno->media = total/numeroDeNotas;
-};
+}
 
 void gerarConceito(struct Aluno *aluno){
     if(aluno->media < 6.5){
