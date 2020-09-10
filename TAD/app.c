@@ -3,15 +3,39 @@
 #include <string.h>
 #include "aluno.h"
 
+void exibirDadosAluno(struct Aluno aluno);
+void calcularMedia(struct Aluno *aluno);
+void gerarConceito(struct Aluno *aluno);
+
 void main(){
     struct Aluno aluno;
-    
-    aluno.registroDeAluno = 123;
-    strcpy(aluno.nome, "Jonathan");
-    strcpy(aluno.disciplina, "Matematica");
-    aluno.notas[0] = 8;
-    aluno.notas[1] = 8;
-    aluno.notas[2] = 10;
+    int ra;
+    double nota;
+    char nome[50];
+    char disciplina[50];
+
+    printf("RA: ");
+    scanf("%d", &ra);
+    fflush(stdin);
+    printf("\nNome: ");
+    scanf("%s", &nome);
+    fflush(stdin);
+    printf("\nDisciplina: ");
+    scanf("%s", &disciplina);
+    fflush(stdin);
+
+    // TODO resolver esta leitura
+    for (int i = 0; i < sizeof(aluno.notas)/sizeof(aluno.notas[0]); ++i) {
+        printf("Nota %d: ", i+1);
+        scanf("%Le", &nota);
+        aluno.notas[i] = nota;
+        nota = 0;
+    }
+
+    aluno.registroDeAluno = ra;
+
+    strcpy(aluno.nome, nome);
+    strcpy(aluno.disciplina, disciplina);
 
     calcularMedia(&aluno);
     gerarConceito(&aluno);
@@ -20,7 +44,7 @@ void main(){
 }
 
 void exibirDadosAluno(struct Aluno aluno){
-    printf("Ra: %d", aluno.registroDeAluno);
+    printf("\nRa: %d", aluno.registroDeAluno);
     printf("\nNome: %s ", aluno.nome);
     printf("\nDisciplina: %s ", aluno.disciplina);
     printf("\nNotas: N1 = %d, N2 = %d, N3 = %d ", aluno.notas[0],aluno.notas[1], aluno.notas[2]);
